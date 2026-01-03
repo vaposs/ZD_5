@@ -6,17 +6,25 @@ namespace ZD_5
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine(ConstrainToRange(5,6,2));
+            Console.WriteLine(Clamp(15, 10, 20));
+            //Console.WriteLine(Clamp(15,10,2));
         }
 
-        public static int ConstrainToRange(int value, int min, int max)
+        public static int Clamp(int value, int min, int max)
         {
-            if (value < min)
-                return min;
-            else if (value > max)
-                return max;
+            if (min < max)
+            {
+                if (value < min)
+                    return min;
+                else if (value > max)
+                    return max;
+                else
+                    return value;
+            }
             else
-                return value;
+            {
+                throw new ArgumentException($"некоректные входные данные (min={min}> max={max})");
+            }
         }
     }
 }
